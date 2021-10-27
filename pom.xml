@@ -259,6 +259,20 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.4.10</version>
+        <configuration>
+          <repository>octank/${project.artifactId}</repository>
+          <!-- tag image as latest, replace with ${project.version} if you want to use your project version as tag -->
+          <tag>latest</tag>
+          <buildArgs>
+            <!-- we pass the jar as argument to the Dockerfile -->
+            <JAR_FILE>target/${project.build.finalName}.war</JAR_FILE>
+          </buildArgs>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
